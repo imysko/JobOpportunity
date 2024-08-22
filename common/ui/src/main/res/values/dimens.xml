@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_top_margin">16dp</dimen>
+    <dimen name="fragment_top_margin_large">32dp</dimen>
+</resources>

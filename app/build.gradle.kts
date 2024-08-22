@@ -35,11 +35,24 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+    dataBinding {
+        enable = true
+    }
 }
 
 dependencies {
 
     implementation(project(":common:ui"))
+
+    implementation(project(":features:search"))
+    implementation(project(":features:favorite"))
+    implementation(project(":features:feedback"))
+    implementation(project(":features:messages"))
+    implementation(project(":features:profile"))
 
     implementation(libs.androidx.core.ktx)
 
@@ -47,6 +60,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

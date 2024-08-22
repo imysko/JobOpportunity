@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_search">
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.imysko.features.search.SearchFragment"
+        android:label="@string/search_tab_title"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.imysko.features.favorite.FavoriteFragment"
+        android:label="@string/favorite_tab_title"
+        tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/navigation_feedback"
+        android:name="com.imysko.features.feedback.FeedbackFragment"
+        android:label="@string/feedback_tab_title"
+        tools:layout="@layout/fragment_feedback" />
+
+    <fragment
+        android:id="@+id/navigation_messages"
+        android:name="com.imysko.features.messages.MessagesFragment"
+        android:label="@string/messages_tab_title"
+        tools:layout="@layout/fragment_messages" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.imysko.features.profile.ProfileFragment"
+        android:label="@string/profile_tab_title"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

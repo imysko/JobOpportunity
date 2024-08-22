@@ -23,3 +23,9 @@ rootProject.name = "JobOpportunity"
 include(":app")
 
 include(":common:ui")
+
+include(":features:search")
+include(":features:favorite")
+include(":features:feedback")
+include(":features:messages")
+include(":features:profile")
