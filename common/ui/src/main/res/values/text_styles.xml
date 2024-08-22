@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Title1" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.Title2" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Title3" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Title4" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Text1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.ButtonText1" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.ButtonText2" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TabText">
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Number">
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">7sp</item>
+    </style>
+</resources>

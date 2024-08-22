@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screen_not_implemented">Этот экран ещё не разработан</string>
+    <string name="back_to_air_tickets_screen">Вернутся к поиску вакансий</string>
+</resources>
