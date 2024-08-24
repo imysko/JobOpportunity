@@ -48,6 +48,7 @@ dependencies {
 
     implementation(project(":common:ui"))
 
+    implementation(project(":features:authorization"))
     implementation(project(":features:search"))
     implementation(project(":features:favorite"))
     implementation(project(":features:feedback"))
@@ -63,6 +64,9 @@ dependencies {
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

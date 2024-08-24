@@ -24,6 +24,7 @@ include(":app")
 
 include(":common:ui")
 
+include(":features:authorization")
 include(":features:search")
 include(":features:favorite")
 include(":features:feedback")

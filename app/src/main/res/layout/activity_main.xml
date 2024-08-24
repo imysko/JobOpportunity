@@ -7,7 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- TODO: replace fragment after authorize -->
     <androidx.fragment.app.FragmentContainerView
+        android:visibility="visible"
+        android:id="@+id/authorization_fragment"
+        android:name="com.imysko.features.authorization.presentation.screens.homeAuthorization.HomeAuthorizationFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_home_authorization" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:visibility="gone"
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
