@@ -1,6 +1,6 @@
 package com.imysko.features.authorization.domain.usecase
 
-import com.imysko.features.authorization.domain.repositories.AuthorizationRepository
+import com.imysko.data.authorization.AuthorizationRepository
 import javax.inject.Inject
 
 interface SendCodeOnEmailUseCase {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authorization_navigation_graph"
+    app:startDestination="@id/fragment_home_authorization">
+
+    <fragment
+        android:id="@+id/fragment_home_authorization"
+        android:name="com.imysko.features.authorization.presentation.screens.homeAuthorization.HomeAuthorizationFragment"
+        tools:layout="@layout/fragment_home_authorization">
+
+        <action
+            android:id="@+id/action_navigate_to_code_confirmation"
+            app:destination="@id/fragment_code_confirmation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_code_confirmation"
+        android:name="com.imysko.features.authorization.presentation.screens.codeConfirmation.CodeConfirmationFragment"
+        tools:layout="@layout/fragment_code_confirmation">
+
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -48,6 +48,8 @@ dependencies {
 
     implementation(project(":common:ui"))
 
+    implementation(project(":data:authorization"))
+
     implementation(project(":features:authorization"))
     implementation(project(":features:search"))
     implementation(project(":features:favorite"))

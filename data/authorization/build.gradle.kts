@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.imysko.features.authorization"
+    namespace = "com.imysko.data.authorization"
     compileSdk = 34
 
     defaultConfig {
@@ -43,21 +43,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":common:ui"))
-
-    implementation(project(":data:authorization"))
-
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-
-    implementation(libs.androidx.fragment.ktx)
-
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)

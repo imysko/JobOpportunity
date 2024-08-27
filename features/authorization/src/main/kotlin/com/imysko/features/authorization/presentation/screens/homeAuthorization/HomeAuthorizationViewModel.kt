@@ -2,7 +2,6 @@ package com.imysko.features.authorization.presentation.screens.homeAuthorization
 
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.imysko.features.authorization.domain.usecase.SendCodeOnEmailUseCase
 import kotlinx.coroutines.Dispatchers
@@ -12,8 +11,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Provider
 
 class HomeAuthorizationViewModel(
     private val sendCodeOnEmailUseCase: SendCodeOnEmailUseCase,
@@ -24,6 +21,8 @@ class HomeAuthorizationViewModel(
         get() = _uiState.asStateFlow()
 
     private val _emailInput = MutableStateFlow("")
+    val emailInput: String
+        get() = _emailInput.value
 
     fun onEmailChange(email: String) {
         _emailInput.update { email }
@@ -52,17 +51,6 @@ class HomeAuthorizationViewModel(
             withContext(Dispatchers.IO) {
                 sendCodeOnEmailUseCase.invoke(_emailInput.value)
             }
-        }
-    }
-
-    class Factory @Inject constructor(
-        private val sendCodeOnEmailUseCase: Provider<SendCodeOnEmailUseCase>,
-    ) : ViewModelProvider.Factory {
-
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            require(modelClass == HomeAuthorizationViewModel::class.java)
-            return HomeAuthorizationViewModel(sendCodeOnEmailUseCase.get()) as T
         }
     }
 }

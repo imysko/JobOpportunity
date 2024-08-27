@@ -1,6 +1,5 @@
-package com.imysko.features.authorization.data.repositories
+package com.imysko.data.authorization
 
-import com.imysko.features.authorization.domain.repositories.AuthorizationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

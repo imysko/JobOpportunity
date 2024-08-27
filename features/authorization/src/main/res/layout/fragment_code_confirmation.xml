@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="uiState"
+            type="com.imysko.features.authorization.presentation.screens.codeConfirmation.CodeConfirmationUiState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+        android:orientation="vertical"
+        android:paddingTop="130dp">
+
+        <TextView
+            style="@style/TextAppearance.Title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{@string/code_confirmation_screen_title(uiState.email)}"
+            tools:text="Отправили код на example@mail.ru" />
+
+        <TextView
+            style="@style/TextAppearance.Title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/code_confirmation_screen_description" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/ConfirmationCodeCell.Layout"
+                android:layout_marginEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_digit"
+                    style="@style/ConfirmationCodeCell.EditText"
+                    android:nextFocusRight="@id/second_digit"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:text="@{uiState.firstDigit}"
+                    android:hint="@string/password_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/ConfirmationCodeCell.Layout"
+                android:layout_marginEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/second_digit"
+                    style="@style/ConfirmationCodeCell.EditText"
+                    android:nextFocusRight="@id/third_digit"
+                    android:nextFocusLeft="@id/first_digit"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:text="@{uiState.secondDigit}"
+                    android:hint="@string/password_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/ConfirmationCodeCell.Layout"
+                android:layout_marginEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/third_digit"
+                    style="@style/ConfirmationCodeCell.EditText"
+                    android:nextFocusRight="@id/forth_digit"
+                    android:nextFocusLeft="@id/second_digit"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:text="@{uiState.thirdDigit}"
+                    android:hint="@string/password_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/ConfirmationCodeCell.Layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/forth_digit"
+                    style="@style/ConfirmationCodeCell.EditText"
+                    android:nextFocusLeft="@id/third_digit"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionDone"
+                    android:text="@{uiState.forthDigit}"
+                    android:hint="@string/password_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/BasicButton.PrimaryButton.Large"
+            android:enabled="@{uiState.confirmButtonEnabled}"
+            android:text="@string/confirmation_button" />
+
+    </LinearLayout>
+</layout>

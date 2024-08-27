@@ -1,4 +1,4 @@
-package com.imysko.features.authorization.domain.repositories
+package com.imysko.data.authorization
 
 import kotlinx.coroutines.flow.StateFlow
 

@@ -8,7 +8,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-internal abstract class AuthorizationUseCaseModule {
+internal abstract class BindAuthorizationUseCase {
 
     @Binds
     abstract fun bindSendCodeOnEmailUseCase(
