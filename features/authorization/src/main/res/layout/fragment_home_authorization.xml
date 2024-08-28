@@ -93,7 +93,7 @@
 
             <Button
                 android:id="@+id/password_login_button"
-                style="@style/BasicButton.TextButton"
+                style="@style/BasicButton.PrimaryTextButton"
                 android:layout_marginVertical="11dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/password_login_button"

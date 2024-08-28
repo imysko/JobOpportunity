@@ -34,12 +34,21 @@
         <item name="android:textColor">@color/button_text_color</item>
     </style>
 
-    <style name="BasicButton.TextButton" parent="BasicButton">
+    <style name="BasicButton.PrimaryTextButton" parent="BasicButton">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.ButtonText2</item>
         <item name="android:background">@color/transparent</item>
         <item name="backgroundTint">@null</item>
         <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="BasicButton.SecondaryTextButton" parent="BasicButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.Text1</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
     </style>
 </resources>

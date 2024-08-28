@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="block_vacancies_title">Вакансии для вас</string>
+
+    <string name="offer_icon_description">offer icon</string>
+
+    <plurals name="lookingNumber">
+        <item quantity="one">Сейчас просматривает %d человек</item>
+        <item quantity="few">Сейчас просматривает %d человека</item>
+        <item quantity="many">Сейчас просматривает %d человек</item>
+    </plurals>
+
+    <string name="favorite_button_description">add to favorite</string>
+    <string name="confirmed_company_icon_description">company is confirmed</string>
+    <string name="experience_icon_description">experience</string>
+
+    <string name="published_date">Опубликовано %1$s</string>
+    <string name="feedback_button">Откликнуться</string>
+
+    <plurals name="more_vacancy">
+        <item quantity="one">Еще %d вакансия</item>
+        <item quantity="few">Еще %d вакансии</item>
+        <item quantity="many">Еще %d вакансий</item>
+    </plurals>
+</resources>

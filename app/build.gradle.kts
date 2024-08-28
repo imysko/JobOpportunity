@@ -51,7 +51,7 @@ dependencies {
     implementation(project(":data:authorization"))
 
     implementation(project(":features:authorization"))
-    implementation(project(":features:search"))
+    implementation(project(":features:searchVacancy"))
     implementation(project(":features:favorite"))
     implementation(project(":features:feedback"))
     implementation(project(":features:messages"))

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation_graph"
-    app:startDestination="@+id/navigation_search">
+    app:startDestination="@+id/navigation_search_vacancy">
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.imysko.features.search.SearchFragment"
+        android:id="@+id/navigation_search_vacancy"
+        android:name="com.imysko.features.searchVacancy.presentation.SearchVacancyFragment"
         android:label="@string/search_tab_title"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search_vacancy" />
 
     <fragment
         android:id="@+id/navigation_favorite"
