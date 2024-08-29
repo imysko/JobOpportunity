@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputEditText
 import com.imysko.features.authorization.R
@@ -51,6 +53,15 @@ class CodeConfirmationFragment : Fragment() {
     ): View {
         _binding = FragmentCodeConfirmationBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this.viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigateUp()
+                }
+            }
+        )
 
         _viewModel.uiState.asLiveData().observe(viewLifecycleOwner) { uiState ->
             binding.uiState = uiState

@@ -16,7 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_main"
+        tools:layout="@layout/fragment_main_nav_host"
         app:defaultNavHost="true" />
 
     <!-- TODO: add badge on favorite tab -->

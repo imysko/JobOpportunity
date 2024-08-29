@@ -14,8 +14,7 @@
 
         <action
             android:id="@+id/action_navigate_to_vacancy_detail"
-            app:destination="@id/vacancy_detail_navigation_graph"
-            app:popUpTo="@+id/fragment_search_vacancy">
+            app:destination="@id/vacancy_detail_navigation_graph">
 
             <argument
                 android:name="vacancy_id"

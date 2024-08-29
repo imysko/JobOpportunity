@@ -7,6 +7,7 @@ import androidx.fragment.app.replace
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.imysko.features.authorization.presentation.screens.AuthorizationNavHostFragment
 import com.imysko.jobopportunity.App
 import com.imysko.jobopportunity.R
 import com.imysko.jobopportunity.databinding.ActivityMainBinding
@@ -37,14 +38,14 @@ class MainActivity : AppCompatActivity() {
         _viewModel.isAuthorized.asLiveData().observe(this) { authState ->
             if (authState) {
                 supportFragmentManager.beginTransaction()
-                    .replace<MainFragment>(R.id.main_container)
+                    .replace<MainNavHostFragment>(R.id.main_container)
                     .runOnCommit {
                         setupNavController()
                     }
                     .commitNow()
             } else {
                 supportFragmentManager.beginTransaction()
-                    .replace<AuthorizationFragment>(R.id.main_container)
+                    .replace<AuthorizationNavHostFragment>(R.id.main_container)
                     .commitNow()
             }
         }
