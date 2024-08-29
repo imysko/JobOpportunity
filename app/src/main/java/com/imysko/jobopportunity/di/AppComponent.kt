@@ -5,6 +5,7 @@ import com.imysko.data.authorization.AuthorizationRepository
 import com.imysko.data.authorization.di.AuthorizationRepositoryProvider
 import com.imysko.features.authorization.di.AuthorizationDeps
 import com.imysko.features.searchVacancy.di.SearchVacancyDeps
+import com.imysko.features.vacancyDetail.di.VacancyDetailDeps
 import com.imysko.jobopportunity.ui.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 @Component(
     modules = [AuthorizationRepositoryProvider::class],
 )
-interface AppComponent : AuthorizationDeps, SearchVacancyDeps {
+interface AppComponent : AuthorizationDeps, SearchVacancyDeps, VacancyDetailDeps {
 
     override val authorizationRepository: AuthorizationRepository
     override val appContext: Context

@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.kapt)
 
     alias(libs.plugins.android.library)
+
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -47,10 +49,15 @@ dependencies {
     implementation(project(":data:offers"))
     implementation(project(":data:vacancies"))
 
+    implementation(project(":features:vacancyDetail"))
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
     implementation(libs.androidx.fragment.ktx)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.recyclerview)
 

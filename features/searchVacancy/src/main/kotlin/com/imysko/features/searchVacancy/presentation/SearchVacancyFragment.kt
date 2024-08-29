@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import com.imysko.common.ui.delegateAdapter.CompositeAdapter
 import com.imysko.common.ui.delegateAdapter.DelegateAdapterItem
 import com.imysko.features.searchVacancy.R
@@ -123,7 +124,8 @@ class SearchVacancyFragment : Fragment() {
     }
 
     private fun onVacancyCardClick(id: String) {
-        // TODO: navigate to vacancy detail screen
+        val action = SearchVacancyFragmentDirections.actionNavigateToVacancyDetail(id)
+        findNavController().navigate(action)
     }
 
     private fun onVacancyFavoriteButtonClick(id: String, newState: Boolean) {

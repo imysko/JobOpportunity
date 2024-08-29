@@ -31,6 +31,7 @@ include(":data:vacancies")
 
 include(":features:authorization")
 include(":features:searchVacancy")
+include(":features:vacancyDetail")
 include(":features:favorite")
 include(":features:feedback")
 include(":features:messages")

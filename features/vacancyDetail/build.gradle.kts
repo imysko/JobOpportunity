@@ -2,21 +2,19 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.kapt)
 
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
+
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
-    namespace = "com.imysko.jobopportunity"
+    namespace = "com.imysko.features.vacancyDetail"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.imysko.jobopportunity"
         minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -48,30 +46,20 @@ dependencies {
 
     implementation(project(":common:ui"))
 
-    implementation(project(":data:authorization"))
-
-    implementation(project(":features:authorization"))
-    implementation(project(":features:searchVacancy"))
-    implementation(project(":features:vacancyDetail"))
-    implementation(project(":features:favorite"))
-    implementation(project(":features:feedback"))
-    implementation(project(":features:messages"))
-    implementation(project(":features:profile"))
-
-    implementation(libs.androidx.core.ktx)
+    implementation(project(":data:vacancies"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    implementation(libs.androidx.recyclerview)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }

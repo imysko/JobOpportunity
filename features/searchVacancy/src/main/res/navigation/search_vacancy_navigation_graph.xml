@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_vacancy_navigation_graph"
+    app:startDestination="@id/fragment_search_vacancy">
+
+    <include app:graph="@navigation/vacancy_detail_navigation_graph" />
+
+    <fragment
+        android:id="@+id/fragment_search_vacancy"
+        android:name="com.imysko.features.searchVacancy.presentation.SearchVacancyFragment"
+        tools:layout="@layout/fragment_search_vacancy">
+
+        <action
+            android:id="@+id/action_navigate_to_vacancy_detail"
+            app:destination="@id/vacancy_detail_navigation_graph"
+            app:popUpTo="@+id/fragment_search_vacancy">
+
+            <argument
+                android:name="vacancy_id"
+                app:argType="string" />
+        </action>
+    </fragment>
+</navigation>

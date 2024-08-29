@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="text"
+            type="String" />
+    </data>
+
+    <Button
+        android:id="@+id/more_vacancy_button"
+        style="@style/BasicButton.PrimaryButton.Large"
+        android:layout_marginTop="16dp"
+        android:text="@{text}"
+        android:backgroundTint="?attr/colorSecondary"
+        tools:text="Откликнуться" />
+</layout>
