@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vacancyInfo"
+            type="com.imysko.common.ui.vacancies.VacancyAdapterModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/vacancy_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/grey1"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
+
+            <TextView
+                android:id="@+id/lookingNumber"
+                style="@style/TextAppearance.Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{@plurals/vacancy_looking_number(vacancyInfo.lookingNumberVisible ? vacancyInfo.lookingNumber : 0, vacancyInfo.lookingNumber)}"
+                android:textColor="@color/green"
+                android:visibility="@{vacancyInfo.lookingNumberVisible ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@id/vacancy_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Сейчас просматривает 7 человек" />
+
+            <ImageButton
+                android:id="@+id/favorite_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:backgroundTint="@color/transparent"
+                android:contentDescription="@string/vacancy_favorite_button_description"
+                android:src="@{vacancyInfo.isFavorite ? @drawable/favorite_filled : @drawable/favorite}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/favorite_filled" />
+
+            <TextView
+                android:id="@+id/vacancy_title"
+                style="@style/TextAppearance.Title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{vacancyInfo.title}"
+                app:layout_constraintBottom_toTopOf="@id/vacancy_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lookingNumber"
+                tools:text="UX дизайнер" />
+
+            <TextView
+                android:id="@+id/vacancy_price"
+                style="@style/TextAppearance.Title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{vacancyInfo.salary}"
+                android:visibility="@{vacancyInfo.salaryVisible ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toTopOf="@id/town"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vacancy_title"
+                tools:text="1500-2900 Br" />
+
+            <TextView
+                android:id="@+id/town"
+                style="@style/TextAppearance.Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@{vacancyInfo.town}"
+                app:layout_constraintBottom_toTopOf="@id/company_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vacancy_price"
+                tools:text="Минск" />
+
+            <TextView
+                android:id="@+id/company_name"
+                style="@style/TextAppearance.Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@{vacancyInfo.companyName}"
+                app:layout_constraintBottom_toTopOf="@id/experience"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/town"
+                tools:text="Еком дизайн" />
+
+            <ImageView
+                android:id="@+id/check_mark_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/vacancy_confirmed_company_icon_description"
+                android:src="@drawable/check_mark"
+                app:layout_constraintBottom_toBottomOf="@id/company_name"
+                app:layout_constraintStart_toEndOf="@id/company_name"
+                app:layout_constraintTop_toTopOf="@id/company_name" />
+
+            <ImageView
+                android:id="@+id/experience_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/vacancy_experience_icon_description"
+                android:src="@drawable/experience"
+                app:layout_constraintBottom_toBottomOf="@id/experience"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/experience" />
+
+            <TextView
+                android:id="@+id/experience"
+                style="@style/TextAppearance.Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{vacancyInfo.experience}"
+                app:layout_constraintBottom_toTopOf="@id/published_date"
+                app:layout_constraintStart_toEndOf="@id/experience_icon"
+                app:layout_constraintTop_toBottomOf="@id/company_name"
+                tools:text="Опыт от 1 года до 3 лет" />
+
+            <TextView
+                android:id="@+id/published_date"
+                style="@style/TextAppearance.Text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/vacancy_published_date(vacancyInfo.publishedDate)}"
+                android:textColor="@color/grey3"
+                app:layout_constraintBottom_toTopOf="@id/feedback_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/experience"
+                tools:text="Опубликовано 16 февраля" />
+
+            <Button
+                android:id="@+id/feedback_button"
+                style="@style/BasicButton.SecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_marginTop="2dp"
+                android:text="@string/vacancy_feedback_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/published_date" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

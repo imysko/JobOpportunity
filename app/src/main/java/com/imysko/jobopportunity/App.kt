@@ -1,9 +1,7 @@
 package com.imysko.jobopportunity
 
 import android.app.Application
-import com.imysko.features.authorization.di.AuthorizationDepsStore
 import com.imysko.features.searchVacancy.di.SearchVacancyDepsStore
-import com.imysko.features.vacancyDetail.di.VacancyDetailDepsStore
 import com.imysko.jobopportunity.di.AppComponent
 import com.imysko.jobopportunity.di.DaggerAppComponent
 
@@ -17,8 +15,6 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AuthorizationDepsStore.deps = appComponent
         SearchVacancyDepsStore.deps = appComponent
-        VacancyDetailDepsStore.deps = appComponent
     }
 }

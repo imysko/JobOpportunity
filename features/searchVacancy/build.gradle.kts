@@ -49,8 +49,6 @@ dependencies {
     implementation(project(":data:offers"))
     implementation(project(":data:vacancies"))
 
-    implementation(project(":features:vacancyDetail"))
-
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 

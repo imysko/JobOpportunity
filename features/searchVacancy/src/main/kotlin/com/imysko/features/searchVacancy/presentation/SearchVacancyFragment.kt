@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.findNavController
 import com.imysko.common.ui.delegateAdapter.CompositeAdapter
 import com.imysko.common.ui.delegateAdapter.DelegateAdapterItem
+import com.imysko.common.ui.vacancies.VacancyAdapterDelegate
 import com.imysko.features.searchVacancy.R
 import com.imysko.features.searchVacancy.databinding.FragmentSearchVacancyBinding
 import com.imysko.features.searchVacancy.di.DaggerSearchVacancyComponent
@@ -20,10 +20,13 @@ import com.imysko.features.searchVacancy.di.SearchVacancyDepsStore
 import com.imysko.features.searchVacancy.presentation.adapters.BlockTitleAdapterDelegate
 import com.imysko.features.searchVacancy.presentation.adapters.MoreVacancyButtonAdapterDelegate
 import com.imysko.features.searchVacancy.presentation.adapters.OffersBlockAdapterDelegate
-import com.imysko.features.searchVacancy.presentation.adapters.VacancyAdapterDelegate
+import com.imysko.features.searchVacancy.presentation.adapters.SearchBlockAdapterDelegate
+import com.imysko.features.searchVacancy.presentation.adapters.TotalVacanciesDescriptionAdapterDelegate
 import com.imysko.features.searchVacancy.presentation.entities.BlockTitleAdapterModel
 import com.imysko.features.searchVacancy.presentation.entities.ButtonAdapterModel
 import com.imysko.features.searchVacancy.presentation.entities.OffersBlockAdapterModel
+import com.imysko.features.searchVacancy.presentation.entities.SearchBlockAdapterModel
+import com.imysko.features.searchVacancy.presentation.entities.TotalVacanciesDescriptionAdapterModel
 import javax.inject.Inject
 
 class SearchVacancyFragment : Fragment() {
@@ -40,6 +43,8 @@ class SearchVacancyFragment : Fragment() {
 
     private val compositeAdapter by lazy {
         CompositeAdapter.Builder()
+            .add(SearchBlockAdapterDelegate())
+            .add(TotalVacanciesDescriptionAdapterDelegate())
             .add(
                 OffersBlockAdapterDelegate(
                     onCardClick = ::onOfferCardClick,
@@ -85,31 +90,40 @@ class SearchVacancyFragment : Fragment() {
 
     private fun updateCompositeAdapter() {
         _viewModel.uiState.asLiveData().observe(viewLifecycleOwner) { uiState ->
-            if (uiState.isShowOffersList) {
-                submitCompositeAdapter(
-                    OffersBlockAdapterModel(uiState.offersList),
-                    BlockTitleAdapterModel(resources.getString(R.string.block_vacancies_title)),
-                    *uiState.vacanciesList.toTypedArray(),
-                    ButtonAdapterModel(
-                        resources.getQuantityString(
-                            R.plurals.more_vacancy,
-                            uiState.totalVacancies,
-                            uiState.totalVacancies
-                        )
-                    ),
-                )
-            } else {
-                submitCompositeAdapter(
-                    BlockTitleAdapterModel(resources.getString(R.string.block_vacancies_title)),
-                    *uiState.vacanciesList.toTypedArray(),
-                    ButtonAdapterModel(
-                        resources.getQuantityString(
-                            R.plurals.more_vacancy,
-                            uiState.totalVacancies,
-                            uiState.totalVacancies
-                        )
-                    ),
-                )
+            when (uiState.screenState) {
+                SearchVacancyUiState.ScreenState.MainState -> {
+                    submitCompositeAdapter(
+                        SearchBlockAdapterModel(
+                            startIconDrawableRes = com.imysko.common.ui.R.drawable.search,
+                            hint = resources.getString(R.string.search_line_hint),
+                        ),
+                        OffersBlockAdapterModel(uiState.offersList),
+                        BlockTitleAdapterModel(resources.getString(R.string.block_vacancies_title)),
+                        *uiState.vacanciesList.take(3).toTypedArray(),
+                        ButtonAdapterModel(
+                            resources.getQuantityString(
+                                R.plurals.more_vacancy,
+                                uiState.totalVacancies,
+                                uiState.totalVacancies
+                            )
+                        ),
+                    )
+                }
+
+                SearchVacancyUiState.ScreenState.VacanciesByMatch -> {
+                    submitCompositeAdapter(
+                        SearchBlockAdapterModel(
+                            startIconDrawableRes = com.imysko.common.ui.R.drawable.back_arrow,
+                            startIconAction = ::onBackVacancyButtonClick,
+                            hint = resources.getString(R.string.search_line_hint_by_matches_vacancies),
+                        ),
+                        TotalVacanciesDescriptionAdapterModel(
+                            totalVacanciesCount = uiState.totalVacancies,
+                            sortType = resources.getString(R.string.sort_by_matches)
+                        ),
+                        *uiState.vacanciesList.toTypedArray(),
+                    )
+                }
             }
         }
     }
@@ -123,16 +137,21 @@ class SearchVacancyFragment : Fragment() {
         startActivity(urlIntent)
     }
 
-    private fun onVacancyCardClick(id: String) {
-        val action = SearchVacancyFragmentDirections.actionNavigateToVacancyDetail(id)
-        findNavController().navigate(action)
-    }
+    private fun onVacancyCardClick(id: String) = Unit
 
     private fun onVacancyFavoriteButtonClick(id: String, newState: Boolean) {
         _viewModel.changeVacancyFavoriteState(id, newState)
     }
 
     private fun onMoreVacancyButtonClick() {
+        _viewModel.showVacanciesByMatch()
+//        Toast.makeText(context, "more", Toast.LENGTH_SHORT).show()
+        // TODO: change screen state
+    }
+
+    private fun onBackVacancyButtonClick() {
+        _viewModel.backToMainVacanciesState()
+//        Toast.makeText(context, "back", Toast.LENGTH_SHORT).show()
         // TODO: change screen state
     }
 }

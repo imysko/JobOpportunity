@@ -3,11 +3,8 @@ package com.imysko.jobopportunity.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.replace
-import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.imysko.features.authorization.presentation.screens.AuthorizationNavHostFragment
 import com.imysko.jobopportunity.App
 import com.imysko.jobopportunity.R
 import com.imysko.jobopportunity.databinding.ActivityMainBinding
@@ -35,27 +32,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        _viewModel.isAuthorized.asLiveData().observe(this) { authState ->
-            if (authState) {
-                supportFragmentManager.beginTransaction()
-                    .replace<MainNavHostFragment>(R.id.main_container)
-                    .runOnCommit {
-                        setupNavController()
-                    }
-                    .commitNow()
-            } else {
-                supportFragmentManager.beginTransaction()
-                    .replace<AuthorizationNavHostFragment>(R.id.main_container)
-                    .commitNow()
-            }
-        }
+        setupNavController()
     }
 
     private fun setupNavController() {
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.main_container)
-            ?.childFragmentManager
-            ?.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
 
         val navController = navHostFragment.navController
         binding.bottomNavBar.setupWithNavController(navController)

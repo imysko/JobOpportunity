@@ -1,7 +1,7 @@
 package com.imysko.features.searchVacancy.presentation.mappers
 
+import com.imysko.common.ui.vacancies.VacancyAdapterModel
 import com.imysko.data.vacancies.entities.Vacancy
-import com.imysko.features.searchVacancy.presentation.entities.VacancyAdapterModel
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 

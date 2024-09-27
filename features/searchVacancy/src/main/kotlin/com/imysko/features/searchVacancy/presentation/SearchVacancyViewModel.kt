@@ -2,7 +2,6 @@ package com.imysko.features.searchVacancy.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.imysko.data.offers.entities.Offer
 import com.imysko.features.searchVacancy.domain.usecase.ChangeVacancyFavoriteStateUseCase
 import com.imysko.features.searchVacancy.domain.usecase.GetOffersListUseCase
 import com.imysko.features.searchVacancy.domain.usecase.GetVacanciesListUseCase
@@ -26,17 +25,12 @@ class SearchVacancyViewModel(
     val uiState: StateFlow<SearchVacancyUiState>
         get() = _uiState.asStateFlow()
 
-    private val _offersList = MutableStateFlow<List<Offer>>(listOf())
-    val offersList: StateFlow<List<Offer>>
-        get() = _offersList.asStateFlow()
-
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 getOffersListUseCase().map { it.mapToAdapterModel() }.also { offersList ->
                     _uiState.update { uiState ->
                         uiState.copy(
-                            isShowOffersList = offersList.any(),
                             offersList = offersList,
                         )
                     }
@@ -52,6 +46,14 @@ class SearchVacancyViewModel(
                 }
             }
         }
+    }
+
+    fun showVacanciesByMatch() {
+        _uiState.update { it.copy(screenState = SearchVacancyUiState.ScreenState.VacanciesByMatch) }
+    }
+
+    fun backToMainVacanciesState() {
+        _uiState.update { it.copy(screenState = SearchVacancyUiState.ScreenState.MainState) }
     }
 
     fun changeVacancyFavoriteState(id: String, newFavoriteState: Boolean) {

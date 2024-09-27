@@ -1,11 +1,7 @@
 package com.imysko.jobopportunity.di
 
 import android.content.Context
-import com.imysko.data.authorization.AuthorizationRepository
-import com.imysko.data.authorization.di.AuthorizationRepositoryProvider
-import com.imysko.features.authorization.di.AuthorizationDeps
 import com.imysko.features.searchVacancy.di.SearchVacancyDeps
-import com.imysko.features.vacancyDetail.di.VacancyDetailDeps
 import com.imysko.jobopportunity.ui.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -13,11 +9,10 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [AuthorizationRepositoryProvider::class],
+    modules = [],
 )
-interface AppComponent : AuthorizationDeps, SearchVacancyDeps, VacancyDetailDeps {
+interface AppComponent : SearchVacancyDeps {
 
-    override val authorizationRepository: AuthorizationRepository
     override val appContext: Context
 
     @Component.Builder

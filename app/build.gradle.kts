@@ -48,11 +48,7 @@ dependencies {
 
     implementation(project(":common:ui"))
 
-    implementation(project(":data:authorization"))
-
-    implementation(project(":features:authorization"))
     implementation(project(":features:searchVacancy"))
-    implementation(project(":features:vacancyDetail"))
     implementation(project(":features:favorite"))
     implementation(project(":features:feedback"))
     implementation(project(":features:messages"))
