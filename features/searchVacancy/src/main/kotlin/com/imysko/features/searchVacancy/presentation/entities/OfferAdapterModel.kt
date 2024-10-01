@@ -1,6 +1,6 @@
 package com.imysko.features.searchVacancy.presentation.entities
 
-import com.imysko.data.offers.entities.OfferId
+import com.imysko.data.offers.domain.entities.OfferId
 
 data class OfferAdapterModel(
     val id: OfferId?,

@@ -1,8 +1,9 @@
 package com.imysko.data.vacancies.di
 
 import android.content.Context
-import com.imysko.data.vacancies.MockVacanciesRepository
-import com.imysko.data.vacancies.VacanciesRepository
+import com.imysko.data.vacancies.domain.repository.VacanciesRepository
+import com.imysko.data.vacancies.local.dao.FavoriteVacancyDao
+import com.imysko.data.vacancies.mock.MockVacanciesRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,6 +14,7 @@ object VacanciesRepositoryProvider {
     @Singleton
     @Provides
     fun providerMockVacanciesRepository(
-        context: Context
-    ): VacanciesRepository = MockVacanciesRepository(context)
+        context: Context,
+        favoriteVacancyDao: FavoriteVacancyDao,
+    ): VacanciesRepository = MockVacanciesRepository(context, favoriteVacancyDao)
 }

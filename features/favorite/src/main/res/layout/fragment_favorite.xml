@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
-    android:layout_marginTop="@dimen/fragment_top_margin_large"
-    tools:context=".FavoriteFragment">
+    android:orientation="vertical"
+    tools:context=".presentation.FavoriteFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/fragment_top_margin_large"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layoutManager="LinearLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/vacancy_card" />
 
     <TextView
         style="@style/TextAppearance.Title2"
@@ -13,4 +25,4 @@
         android:layout_height="wrap_content"
         android:text="@string/favorite_screen_title" />
 
-</FrameLayout>
+</LinearLayout>

@@ -2,9 +2,11 @@ package com.imysko.features.searchVacancy.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.imysko.features.searchVacancy.domain.usecase.ChangeVacancyFavoriteStateUseCase
+import com.imysko.features.searchVacancy.domain.usecase.AddVacancyToFavoriteUseCase
+import com.imysko.features.searchVacancy.domain.usecase.DeleteVacancyFromFavoriteUseCase
 import com.imysko.features.searchVacancy.domain.usecase.GetOffersListUseCase
 import com.imysko.features.searchVacancy.domain.usecase.GetVacanciesListUseCase
+import com.imysko.features.searchVacancy.domain.usecase.GetVacancyByIdUseCase
 import com.imysko.features.searchVacancy.presentation.mappers.mapToAdapterModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +20,9 @@ import kotlinx.coroutines.withContext
 class SearchVacancyViewModel(
     private val getOffersListUseCase: GetOffersListUseCase,
     private val getVacanciesListUseCase: GetVacanciesListUseCase,
-    private val changeVacancyFavoriteStateUseCase: ChangeVacancyFavoriteStateUseCase,
+    private val getVacancyByIdUseCase: GetVacancyByIdUseCase,
+    private val addVacancyToFavoriteUseCase: AddVacancyToFavoriteUseCase,
+    private val deleteVacancyFromFavoriteUseCase: DeleteVacancyFromFavoriteUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SearchVacancyUiState())
@@ -56,10 +60,20 @@ class SearchVacancyViewModel(
         _uiState.update { it.copy(screenState = SearchVacancyUiState.ScreenState.MainState) }
     }
 
-    fun changeVacancyFavoriteState(id: String, newFavoriteState: Boolean) {
+    fun addVacancyToFavorite(id: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                changeVacancyFavoriteStateUseCase(id, newFavoriteState)
+                getVacancyByIdUseCase(id)?.let {
+                    addVacancyToFavoriteUseCase(it)
+                }
+            }
+        }
+    }
+
+    fun deleteVacancyFromFavorite(id: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                deleteVacancyFromFavoriteUseCase(id)
             }
         }
     }

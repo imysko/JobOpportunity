@@ -24,6 +24,7 @@ include(":app")
 
 include(":common:ui")
 include(":common:core")
+include(":common:database")
 
 include(":data:offers")
 include(":data:vacancies")

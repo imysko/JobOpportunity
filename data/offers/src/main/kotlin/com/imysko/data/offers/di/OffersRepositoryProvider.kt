@@ -1,8 +1,8 @@
 package com.imysko.data.offers.di
 
 import android.content.Context
-import com.imysko.data.offers.MockOffersRepository
-import com.imysko.data.offers.OffersRepository
+import com.imysko.data.offers.domain.repository.OffersRepository
+import com.imysko.data.offers.mock.MockOffersRepository
 import dagger.Module
 import dagger.Provides
 

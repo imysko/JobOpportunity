@@ -3,6 +3,7 @@ package com.imysko.jobopportunity.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.imysko.jobopportunity.App
@@ -41,5 +42,18 @@ class MainActivity : AppCompatActivity() {
 
         val navController = navHostFragment.navController
         binding.bottomNavBar.setupWithNavController(navController)
+
+        val badge = binding.bottomNavBar.getOrCreateBadge(R.id.navigation_favorite).also {
+            it.verticalOffset = 16
+            it.horizontalOffset = 8
+            it.backgroundColor = resources.getColor(com.imysko.common.ui.R.color.red, null)
+            it.badgeTextColor = resources.getColor(com.imysko.common.ui.R.color.white, null)
+            it.setTextAppearance(com.imysko.common.ui.R.style.NumberText)
+        }
+
+        _viewModel.favoriteVacanciesCount.asLiveData().observe(this) { count ->
+            badge.isVisible = count > 0
+            badge.number = count
+        }
     }
 }

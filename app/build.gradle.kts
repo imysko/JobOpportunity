@@ -47,6 +47,9 @@ android {
 dependencies {
 
     implementation(project(":common:ui"))
+    implementation(project(":common:database"))
+
+    implementation(project(":data:vacancies"))
 
     implementation(project(":features:searchVacancy"))
     implementation(project(":features:favorite"))

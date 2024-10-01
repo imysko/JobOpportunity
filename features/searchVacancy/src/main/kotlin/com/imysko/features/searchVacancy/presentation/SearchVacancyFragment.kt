@@ -140,18 +140,18 @@ class SearchVacancyFragment : Fragment() {
     private fun onVacancyCardClick(id: String) = Unit
 
     private fun onVacancyFavoriteButtonClick(id: String, newState: Boolean) {
-        _viewModel.changeVacancyFavoriteState(id, newState)
+        if (newState) {
+            _viewModel.addVacancyToFavorite(id)
+        } else {
+            _viewModel.deleteVacancyFromFavorite(id)
+        }
     }
 
     private fun onMoreVacancyButtonClick() {
         _viewModel.showVacanciesByMatch()
-//        Toast.makeText(context, "more", Toast.LENGTH_SHORT).show()
-        // TODO: change screen state
     }
 
     private fun onBackVacancyButtonClick() {
         _viewModel.backToMainVacanciesState()
-//        Toast.makeText(context, "back", Toast.LENGTH_SHORT).show()
-        // TODO: change screen state
     }
 }

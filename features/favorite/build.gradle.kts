@@ -44,5 +44,14 @@ dependencies {
 
     implementation(project(":common:ui"))
 
+    implementation(project(":data:vacancies"))
+
     implementation(libs.androidx.fragment.ktx)
+
+    implementation(libs.androidx.recyclerview)
+
+    implementation(libs.androidx.lifecycle.livedata)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

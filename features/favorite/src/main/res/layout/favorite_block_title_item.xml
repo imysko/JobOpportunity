@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="count"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.Title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@{title}"
+            tools:text="@string/favorite_screen_title" />
+
+        <TextView
+            style="@style/TextAppearance.Text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@plurals/vacancies_count(count, count)}"
+            android:textColor="@color/grey3"
+            tools:text="1 вакансия" />
+    </LinearLayout>
+</layout>

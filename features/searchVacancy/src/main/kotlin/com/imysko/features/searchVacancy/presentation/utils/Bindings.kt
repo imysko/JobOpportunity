@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.imysko.common.ui.R
-import com.imysko.data.offers.entities.OfferId
+import com.imysko.data.offers.domain.entities.OfferId
 
 @BindingAdapter("offer_id")
 fun ImageView.bindOfferId(offerId: OfferId?) {

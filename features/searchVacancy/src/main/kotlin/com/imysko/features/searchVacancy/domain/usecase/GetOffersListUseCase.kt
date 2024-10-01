@@ -1,7 +1,7 @@
 package com.imysko.features.searchVacancy.domain.usecase
 
-import com.imysko.data.offers.OffersRepository
-import com.imysko.data.offers.entities.Offer
+import com.imysko.data.offers.domain.entities.Offer
+import com.imysko.data.offers.domain.repository.OffersRepository
 import javax.inject.Inject
 
 interface GetOffersListUseCase {

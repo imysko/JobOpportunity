@@ -1,7 +1,7 @@
 package com.imysko.features.searchVacancy.domain.usecase
 
-import com.imysko.data.vacancies.VacanciesRepository
-import com.imysko.data.vacancies.entities.Vacancy
+import com.imysko.data.vacancies.domain.entities.Vacancy
+import com.imysko.data.vacancies.domain.repository.VacanciesRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -15,6 +15,6 @@ internal class GetVacanciesListUseCaseImpl @Inject constructor(
 ) : GetVacanciesListUseCase {
 
     override suspend fun invoke(): Flow<List<Vacancy>> {
-        return vacanciesRepository.vacanciesList
+        return vacanciesRepository.getVacanciesList()
     }
 }
